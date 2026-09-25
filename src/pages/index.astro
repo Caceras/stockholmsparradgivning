@@ -1,0 +1,151 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import KommunGrid from '../components/KommunGrid.astro';
+import TeamCard from '../components/TeamCard.astro';
+import team from '../assets/img/team-2026.webp';
+import sippor from '../assets/img/sippor.webp';
+import { SITE, TEAM, KOMMUNER } from '../data/site';
+---
+<Base
+  title="Stockholms Parrådgivning – parterapi & familjerådgivning"
+  description="Kommunal familjerådgivning, parterapi och parrådgivning på Södermalm. Legitimerade psykoterapeuter med avtal i åtta kommuner – från 250 kr per samtal."
+>
+  <section class="hero wrap">
+    <div class="hero-text">
+      <div>
+        <span class="eyebrow">Välkommen till Stockholms Parrådgivning</span>
+        <h1>Parrådgivning och familjerådgivning i Stockholm</h1>
+      </div>
+      <div>
+      <p class="lead">Vår ambition är att skapa en trygg plats där du ges möjlighet att inför din partner prata om hur du har det med dig själv och relationen – och där du även tar den motsatta positionen och lyssnar aktivt till din partner och dennes berättelse.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/boka-tid/">Boka tid <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="/kommunal-familjeradgivning/">Kommunal familjerådgivning</a>
+      </div>
+      <ul class="facts">
+        <li><strong>Från 250 kr</strong><span>per samtal via kommunen</span></li>
+        <li><strong>90 minuter</strong><span>per samtal</span></li>
+        <li><strong>Sekretess</strong><span>inga journaler förs</span></li>
+      </ul>
+      </div>
+    </div>
+    <figure class="hero-img figure">
+      <Image src={team} alt="Terapeuterna på Stockholms Parrådgivning: Lilian Pohlkamp, Pandora Hultqvist och Beny Plüss" widths={[360, 540, 720, 1000]} quality={72} sizes="(min-width: 1180px) 1150px, 100vw" loading="eager" fetchpriority="high" />
+    </figure>
+  </section>
+
+  <section class="wrap chips-row">
+    <p class="muted small">Kommunal familjerådgivning, parterapi och parrådgivning för dig som bor i</p>
+    <ul class="chips">
+      {KOMMUNER.map((k) => <li><a href={`/${k.slug}/`}>{k.name}</a></li>)}
+    </ul>
+  </section>
+
+  <section class="section band">
+    <div class="wrap split">
+      <div>
+        <span class="eyebrow">Om oss</span>
+        <h2>Hjälp för par, föräldrar, syskon och familjer</h2>
+        <p>Stockholms Parrådgivning erbjuder familjerådgivning, parrådgivning och parterapi inom Stockholm med omnejd. Vi vänder oss till par, föräldrar, syskon och familjer som behöver hjälp med olika samlevnadsproblem och kriser. Finns det barn med i relationen lyfter vi även frågan om hur de påverkas av situationen.</p>
+        <p>Familjerådgivning vänder sig till dig som bor i någon av kommunerna vi har avtal med. Vi har subventionerade priser från 250 kr. Osubventionerad parterapi erbjuder vi alla, oavsett var ni bor.</p>
+        <p>Vi är legitimerade psykoterapeuter och auktoriserade familjerådgivare med lång erfarenhet av socialt behandlingsarbete, psykoterapi och samtal med enskilda, par och familjer. Vi har även arbetat med grupper och handleder andra yrkesverksamma. Vår mottagning ligger på Södermalm.</p>
+        <a class="btn btn-ghost" href="/om-oss/">Läs mer om oss <span class="arrow">→</span></a>
+      </div>
+      <div class="note-card card">
+        <h3>Så bokar du</h3>
+        <ol class="steps">
+          <li><strong>Kontakta en av oss direkt</strong> via telefon eller e-post. Du behöver inte ansöka genom kommunen.</li>
+          <li><strong>Uppge förnamn och kommun.</strong> Mer behövs inte – du kan vara anonym.</li>
+          <li><strong>Kom till mottagningen</strong> på {SITE.address.street}. Samtalet är 90 minuter och betalas vid besöket.</li>
+        </ol>
+        <a class="btn btn-primary" href="/boka-tid/">Till bokning <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap split split-rev">
+    <figure class="figure tall">
+      <Image src={sippor} alt="Vitsippor i en lövskog om våren" widths={[320, 440, 570]} quality={72} sizes="(min-width: 900px) 35vw, 100vw" />
+    </figure>
+    <div>
+      <span class="eyebrow">Parrådgivning och familjerådgivning i Stockholm</span>
+      <h2>Alla relationer kan behöva omvårdnad</h2>
+      <p>Problem och kriser tillhör livet. Man kan ha djupa svårigheter som byggt murar i relationen, eller funderingar om vart relationen är på väg. Att ta sig möjligheten att prata om sin relation kan bli en investering i förhållandet, oavsett vilken fas man befinner sig i. Det kan bli ett forum för att fatta gemensamma beslut, enas om vägar framåt och fördjupa relationen – eller för att komma fram till att separera på ett konstruktivt sätt.</p>
+      <p>Vi arbetar för att förstå vad som påverkar relationen och för att hjälpa er att förbättra kommunikationen och öka närheten i förhållandet.</p>
+      <div class="quotes">
+        <p>”Vi grälar jämt”</p>
+        <p>”Vi glider ifrån varandra”</p>
+        <p>”Min partner har varit otrogen”</p>
+        <p>”Vi kan inte tala med varandra”</p>
+      </div>
+      <p class="muted">– Kan vara inledande kommentarer när vi blir kontaktade.</p>
+    </div>
+  </section>
+
+  <section class="section band">
+    <div class="wrap">
+      <span class="eyebrow">Kommunal familjerådgivning</span>
+      <h2 class="read">Det här gäller för samtalen</h2>
+      <div class="grid grid-3 info">
+        <div class="card">
+          <h3>Sekretess</h3>
+          <p>Det är viktigt att känna sig trygg med att det som sägs under samtalet inte förs vidare. Vi psykoterapeuter har stark sekretess och för inga journaler. Du kan alltså vara anonym – ni behöver bara uppge förnamn och kommuntillhörighet.</p>
+        </div>
+        <div class="card">
+          <h3>Samtalet</h3>
+          <p>Samtalet är 90 minuter och betalas vid samtalstillfället. Kostnaden beror på vilken kommun ni bor i.</p>
+        </div>
+        <div class="card">
+          <h3>Hur många samtal?</h3>
+          <p>De flesta kommuner beviljar fem samtal. Ibland räcker det med ett. Om ni är oense eller osäkra kan det vara bra att veta att man kan avsluta efter ett samtal.</p>
+        </div>
+      </div>
+      <div class="kblock">
+        <h3>Välj din kommun</h3>
+        <KommunGrid />
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <div class="head-row">
+      <div>
+        <span class="eyebrow">Våra terapeuter</span>
+        <h2>Legitimerade psykoterapeuter</h2>
+      </div>
+      <a class="btn btn-ghost" href="/boka-tid/">Boka tid <span class="arrow">→</span></a>
+    </div>
+    <div class="grid grid-3">
+      {TEAM.map((m) => <TeamCard m={m} compact />)}
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding-block: clamp(2.5rem, 1.5rem + 5vw, 5.5rem) clamp(1.5rem, 1rem + 2vw, 3rem); }
+  .hero-text { display: grid; gap: 1.5rem clamp(2rem, 5vw, 5rem); align-items: end; margin-bottom: clamp(2rem, 1.5rem + 3vw, 4rem); }
+  @media (min-width: 900px) { .hero-text { grid-template-columns: 1.1fr 0.9fr; } }
+  .hero h1 { max-width: 16ch; margin: 0; font-size: clamp(2.3rem, 1.4rem + 3vw, 3.8rem); }
+  .hero-img { aspect-ratio: 21 / 9; }
+  @media (max-width: 640px) { .hero-img { aspect-ratio: 4 / 3; } }
+  .hero .lead { max-width: 34rem; margin-bottom: 2rem; }
+  .hero-img { margin: 0; }
+  .hero-img :global(img) { object-position: 50% 28%; }
+  .facts { list-style: none; padding: 0; margin: 2rem 0 0; display: flex; flex-wrap: wrap; gap: 1rem 2rem; }
+  .facts li { display: flex; flex-direction: column; margin: 0; }
+  .facts strong { font-family: var(--serif); font-weight: 400; font-size: 1.35rem; color: var(--ink); }
+  .facts span { font-size: 0.88rem; color: var(--muted); }
+  .small { font-size: 0.92rem; margin-bottom: 0.9rem; }
+  .chips-row { padding-block: 0.5rem clamp(3rem, 2rem + 3vw, 5rem); }
+  .steps { padding-left: 1.2rem; }
+  .steps li { margin-bottom: 0.9rem; }
+  .tall { aspect-ratio: 3 / 4; margin: 0; }
+  .quotes { margin: 2rem 0 0.5rem; display: grid; gap: 0.4rem; }
+  .quotes p { font-family: var(--serif); font-style: italic; font-size: clamp(1.35rem, 1.1rem + 1vw, 1.8rem); color: var(--ink); margin: 0; line-height: 1.3; }
+  .info { margin-top: 2rem; }
+  .kblock { margin-top: clamp(3rem, 2rem + 3vw, 4.5rem); }
+  .kblock h3 { margin-bottom: 1.25rem; }
+  .head-row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 1rem; margin-bottom: 2rem; }
+  .head-row h2 { margin: 0; }
+</style>

@@ -1,0 +1,78 @@
+---
+import { SITE, KOMMUNER } from '../data/site';
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="cta">
+      <div>
+        <span class="eyebrow">Boka tid</span>
+        <p class="serif big">Du behöver inte ansöka via kommunen. Kontakta oss direkt.</p>
+      </div>
+      <div class="btn-row">
+        <a class="btn btn-light" href="/boka-tid/">Se våra terapeuter <span class="arrow">→</span></a>
+        <a class="btn btn-outline" href={`mailto:${SITE.email}`}>{SITE.email}</a>
+      </div>
+    </div>
+
+    <div class="cols">
+      <div>
+        <p class="serif name">{SITE.name}</p>
+        <p>Legitimerade psykoterapeuter och auktoriserade familjerådgivare.</p>
+        <address>
+          {SITE.address.street}<br />{SITE.address.zip} {SITE.address.city} ({SITE.address.area})<br />
+          <a href={SITE.mapsUrl} rel="noopener" target="_blank">Visa på karta</a>
+        </address>
+      </div>
+      <nav aria-label="Tjänster">
+        <p class="h">Tjänster</p>
+        <ul>
+          <li><a href="/familjeradgivning/">Familjerådgivning</a></li>
+          <li><a href="/kommunal-familjeradgivning/">Kommunal familjerådgivning</a></li>
+          <li><a href="/parsamtal/">Parsamtal</a></li>
+          <li><a href="/familjesamtal/">Familjesamtal</a></li>
+          <li><a href="/efter-familjeradgivning/">Efter familjerådgivning</a></li>
+          <li><a href="/psykoterapi/">Psykoterapi</a></li>
+          <li><a href="/handledning/">Handledning &amp; grupp</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Kommuner">
+        <p class="h">Kommuner vi har avtal med</p>
+        <ul>
+          {KOMMUNER.map((k) => <li><a href={`/${k.slug}/`}>{k.name}</a></li>)}
+        </ul>
+      </nav>
+      <nav aria-label="Om oss">
+        <p class="h">Kontakt</p>
+        <ul>
+          <li><a href="/om-oss/">Om oss</a></li>
+          <li><a href="/boka-tid/">Boka tid</a></li>
+          <li><a href="/kommuner/">Kommuner &amp; priser</a></li>
+          <li><a href={`mailto:${SITE.email}`}>E-post</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="legal">© {year} {SITE.name} · Familjerådgivningen omfattas av sekretess och vi för inga journaler.</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer { background: var(--brand-ink); color: #cfdcd3; padding-block: clamp(3rem, 2rem + 4vw, 5.5rem) 2rem; margin-top: 0; }
+  .site-footer a { color: #fff; text-decoration: none; }
+  .site-footer a:hover { text-decoration: underline; }
+  .cta { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 2rem; padding-bottom: clamp(2.5rem, 2rem + 2vw, 4rem); border-bottom: 1px solid rgb(255 255 255 / 0.14); }
+  .cta .eyebrow { color: #a9c8b4; }
+  .big { font-size: clamp(1.6rem, 1.2rem + 1.6vw, 2.5rem); line-height: 1.2; color: #fff; max-width: 22ch; margin: 0; }
+  .btn-light { background: #fff; color: var(--brand-ink) !important; }
+  .btn-light:hover { background: var(--brand-soft); text-decoration: none !important; }
+  .btn-outline { border-color: rgb(255 255 255 / 0.35); color: #fff; }
+  .btn-outline:hover { border-color: #fff; text-decoration: none !important; }
+  .cols { display: grid; gap: 2rem; padding-block: 3rem; }
+  @media (min-width: 720px) { .cols { grid-template-columns: 1.4fr 1fr 1fr 0.8fr; } }
+  .name { font-size: 1.4rem; color: #fff; margin-bottom: 0.5rem; }
+  address { font-style: normal; line-height: 1.8; }
+  .h { font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: #a9c8b4; font-weight: 600; margin-bottom: 0.8rem; }
+  ul { list-style: none; padding: 0; margin: 0; }
+  li { margin-bottom: 0.45rem; }
+  .legal { font-size: 0.82rem; color: #c9d8ce; border-top: 1px solid rgb(255 255 255 / 0.14); padding-top: 1.5rem; margin: 0; }
+</style>

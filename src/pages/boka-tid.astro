@@ -1,0 +1,35 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import TeamCard from '../components/TeamCard.astro';
+import { TEAM, SITE } from '../data/site';
+---
+<Base title="Boka tid – kontakta en familjerådgivare" description="Boka parsamtal, familjerådgivning eller psykoterapi direkt hos våra legitimerade psykoterapeuter. Ingen ansökan via kommunen. Åsögatan 122, Södermalm." crumbs={[{ name: 'Boka tid', href: '/boka-tid/' }]}>
+  <PageHead eyebrow="Boka tid" title="Kontakta någon av oss direkt" lead="Ring eller mejla den familjerådgivare du vill träffa. Du behöver inte ansöka genom kommunen – uppge bara förnamn och vilken kommun ni bor i." />
+  <section class="wrap section-tight" style="padding-top:0">
+    <div class="grid grid-3">{TEAM.map((m) => <TeamCard m={m} />)}</div>
+  </section>
+  <section class="section band">
+    <div class="wrap grid grid-3">
+      <div>
+        <h3>Adress</h3>
+        <p>{SITE.address.street}<br />{SITE.address.zip} {SITE.address.city}<br /><span class="muted">{SITE.address.area}</span></p>
+        <p><a href={SITE.mapsUrl} rel="noopener" target="_blank">Visa på Google Maps →</a></p>
+      </div>
+      <div>
+        <h3>Allmänna frågor</h3>
+        <p><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+        <p class="muted">Skriv inte känsliga uppgifter i e-post. Förnamn och kommun räcker för att boka.</p>
+      </div>
+      <div>
+        <h3>Bra att veta</h3>
+        <ul class="check">
+          <li>Samtalen är 90 minuter</li>
+          <li>Betalning vid samtalstillfället</li>
+          <li>Avbokning senast kl. 09.00 dagen före</li>
+          <li><a href="/kommuner/">Egenavgift per kommun</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,18 @@
+{
+  "name": "stockholmsparradgivning",
+  "scripts": {
+    "prebuild": "node scripts/prebuild.mjs",
+    "build": "astro build",
+    "dev": "node scripts/prebuild.mjs && astro dev",
+    "preview": "astro preview"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "3.7.4",
+    "@fontsource-variable/inter": "5.3.0",
+    "@fontsource-variable/newsreader": "5.3.0",
+    "astro": "7.3.5",
+    "sharp": "0.35.4"
+  },
+  "type": "module",
+  "private": true
+}

@@ -1,0 +1,112 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE, TEAM, KOMMUNER } from '../data/site';
+
+interface Crumb { name: string; href: string }
+interface Props {
+  title: string;
+  description: string;
+  crumbs?: Crumb[];
+  jsonld?: Record<string, unknown>[];
+  noindex?: boolean;
+}
+const { title, description, crumbs = [], jsonld = [], noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, SITE.url).href;
+const withBrand = `${title} | ${SITE.name}`;
+const fullTitle = title.includes(SITE.name) || withBrand.length > 65 ? title : withBrand;
+const ogImage = new URL('/og.jpg', SITE.url).href;
+
+const org = {
+  '@context': 'https://schema.org',
+  '@type': ['MedicalBusiness', 'ProfessionalService'],
+  '@id': `${SITE.url}/#org`,
+  name: SITE.name,
+  description: 'Kommunal familjerådgivning, parrådgivning, parterapi och psykoterapi i Stockholm. Legitimerade psykoterapeuter och auktoriserade familjerådgivare på Södermalm.',
+  url: `${SITE.url}/`,
+  email: SITE.email,
+  logo: `${SITE.url}/icon-512.png`,
+  image: ogImage,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: SITE.address.street,
+    postalCode: SITE.address.zip,
+    addressLocality: SITE.address.city,
+    addressCountry: 'SE',
+  },
+  areaServed: KOMMUNER.map((k) => ({ '@type': 'City', name: k.name })),
+  priceRange: '250–500 kr',
+  employee: TEAM.map((m) => ({
+    '@type': 'Person',
+    name: m.name,
+    jobTitle: 'Legitimerad psykoterapeut',
+    email: m.email,
+    telephone: m.phoneHref,
+    ...(m.web ? { sameAs: [m.web.href] } : {}),
+  })),
+};
+
+const breadcrumb = crumbs.length
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: [{ name: 'Hem', href: '/' }, ...crumbs].map((c, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: c.name,
+        item: new URL(c.href, SITE.url).href,
+      })),
+    }
+  : null;
+
+const schemas = [org, ...(breadcrumb ? [breadcrumb] : []), ...jsonld];
+---
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content="#faf8f4" />
+    <link rel="preload" href="/fonts/inter-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/fonts/newsreader-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="sv_SE" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    {schemas.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+  </head>
+  <body>
+    <a class="skip" href="#main">Hoppa till innehållet</a>
+    <Header />
+    <main id="main">
+      {crumbs.length > 0 && (
+        <nav class="wrap crumbs-wrap" aria-label="Brödsmulor">
+          <p class="crumbs" style="margin:1.75rem 0 0">
+            <a href="/">Hem</a>
+            {crumbs.map((c, i) => (
+              <>
+                <span aria-hidden="true">/</span>
+                {i === crumbs.length - 1 ? <span aria-current="page">{c.name}</span> : <a href={c.href}>{c.name}</a>}
+              </>
+            ))}
+          </p>
+        </nav>
+      )}
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

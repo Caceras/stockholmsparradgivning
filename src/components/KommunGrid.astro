@@ -1,0 +1,24 @@
+---
+import { KOMMUNER } from '../data/site';
+---
+<ul class="kgrid">
+  {KOMMUNER.map((k) => (
+    <li>
+      <a href={`/${k.slug}/`}>
+        <span class="n serif">{k.name}</span>
+        <span class="f">Egenavgift {k.fee} kr</span>
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+    </li>
+  ))}
+</ul>
+<style>
+  .kgrid { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); }
+  .kgrid li { margin: 0; }
+  a { position: relative; display: flex; flex-direction: column; gap: 0.2rem; padding: 1.2rem 1.3rem; background: #fff; border: 1px solid var(--line); border-radius: var(--radius); text-decoration: none; transition: border-color .2s, transform .2s, box-shadow .2s; }
+  a:hover { border-color: var(--brand); transform: translateY(-2px); box-shadow: var(--shadow); }
+  .n { font-size: 1.35rem; color: var(--ink); }
+  .f { font-size: 0.9rem; color: var(--muted); }
+  .arrow { position: absolute; right: 1.2rem; top: 50%; transform: translateY(-50%); color: var(--brand-deep); transition: transform .2s; }
+  a:hover .arrow { transform: translate(3px, -50%); }
+</style>

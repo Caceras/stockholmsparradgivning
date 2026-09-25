@@ -1,0 +1,61 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import img from '../assets/img/moln.webp';
+---
+<Base title="Familjesamtal – styvfamilj, adoptivfamilj och kris" description="Familjesamtal när familjen går igenom förändring eller kris – nya barn, tonår, separation, styvfamilj eller adoption. Legitimerade psykoterapeuter." crumbs={[{ name: 'Familjerådgivning', href: '/familjeradgivning/' }, { name: 'Familjesamtal', href: '/familjesamtal/' }]}>
+  <PageHead eyebrow="Familjesamtal" title="Familjesamtal genom livets olika faser" lead="Familjen genomgår under sitt livslopp olika faser och omställningar: att få barn och bli förälder, att syskon tillkommer, att barnen blir tonåringar och att återigen bli bara ett par när barnen flyttar hemifrån." />
+  <section class="wrap split section-tight" style="padding-top:0">
+    <div class="prose">
+      <p>Förändringar påverkar. Att kunna prata om det som händer med en själv och med relationen till sin partner är av stor vikt för att hålla liv i relationen – eller för att separera på ett bra sätt.</p>
+      <p>Många av de familjer som söker hjälp befinner sig i en kris. De kan uppleva kaos och ovisshet om vad det ska utmynna i. Kommer familjen att splittras, och vad skulle det innebära för mig själv, för min partner och kanske framför allt för barnen? Andra som söker är inte i kris, men har problem som de inte lyckas lösa på egen hand. Problemen ser olika ut, och motivationen att komma på samtal likaså.</p>
+      <p>Samtalen är till för att hitta konstruktiva lösningar. Familjen vill ha en förändring, och samtalen går ut på att klargöra vilken förändring man vill se och sedan undersöka hur den kan gå till – alltså inleda en förändringsprocess. För några räcker ett enstaka samtal, för andra en längre serie. Vissa kommer med glesa intervall, andra tätare.</p>
+    </div>
+    <figure class="figure sticky" style="aspect-ratio:3/4;margin:0">
+      <Image src={img} alt="Moln på en blå himmel" widths={[320, 440, 570]} quality={72} sizes="(min-width: 900px) 35vw, 100vw" />
+    </figure>
+  </section>
+
+  <section class="section band">
+    <div class="wrap split">
+      <div class="prose">
+        <span class="eyebrow">Styvfamiljen</span>
+        <h2>En vanlig och modern familj</h2>
+        <p>Styvfamiljen innebär ofta att systemet av inblandade personer är stort – de egna barnen och den andras barn, sin egen expartner och den andras expartner. Hur separationerna gått till, och om man lyckats komma igenom dem på ett bra sätt, spelar sannolikt en betydande roll för styvfamiljens förutsättningar att bli en fungerande familj.</p>
+        <p>Barnen ska förhålla sig till flera vuxna, vilket kan vara en tillgång när det fungerar bra, eller en belastning om konflikter låser sig. Föräldrarna ska förhålla sig till varandras barn, eller så har den ena föräldern inga egna barn. Att få acceptera de egna reaktionerna – till exempel avund, utanförskap och maktlöshet – är viktigt för att sedan kunna prata med varandra om det som uppstår. Att få prata om det som skaver, oroar eller irriterar är att ha en öppen dialog.</p>
+        <p>Barn behöver båda sina föräldrar. Det är sällan eller aldrig ett barns beslut att föräldrarna ska skilja sig – men lite äldre barn kan inse att det är det klokaste när föräldrarna inte längre klarar av att leva med varandra. Barn har rätt att även efter en skilsmässa ha tillgång till båda sina föräldrar.</p>
+        <p>Barn och vuxna kan vara i otakt. En förälder är kanske klar med sin separation och vill introducera sin nya partner, medan barnet befinner sig i sorg och ilska och inte alls är mottagligt för mammas eller pappas nya partner.</p>
+      </div>
+      <div class="card sticky">
+        <h3>Vanliga frågor när vi blir kontaktade</h3>
+        <ul class="check">
+          <li>Vad betyder det att träffa någon som redan har barn, fast man själv inte har det?</li>
+          <li>Får man säga till styvbarn att hjälpa till?</li>
+          <li>Känslor för styvbarnen – vad gör man med dem?</li>
+          <li>Hur gör man om styvbarnet avvisar?</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap split">
+    <div class="prose">
+      <span class="eyebrow">Adoptivfamiljen</span>
+      <h2>Tidigt stöd gör skillnad</h2>
+      <p>Att adoptera ett barn innebär andra förutsättningar än när barnet föds in i familjen. Adoptivföräldern kan bära på en sorg över en ofrivillig barnlöshet, och en adoption är ofta en lång och tung process.</p>
+      <p>Även om allt gått bra kan man behöva samtal – något enstaka eller en mer djupgående kontakt. Vi vet att adoptivbarnet bär med sig en separation och ofta en otrygg anknytning, det vill säga en svår start i livet. Därför är det viktigt att nyss hemkomna adoptivfamiljer har möjlighet till tidigt stöd.</p>
+      <p>Familjestöd kan behövas i olika perioder under barnets uppväxt. Det är vanligt att adoptivbarnet har en extra känslighet för separationer, förändringar och andra påfrestningar – som att börja förskola eller skola, att familjen flyttar eller att föräldrarna har relationsproblem. I tonåren kan vanliga tonårsproblem bli mer komplicerade, och frågor om ursprung och biologiska föräldrar kan bli viktigare att prata om, men samtidigt svåra.</p>
+      <p>Stockholms Parrådgivning erbjuder samtal både för dem som har familjefrågor de vill diskutera, och för dem som är i kris där egna lösningar inte fungerar.</p>
+    </div>
+    <div class="card">
+      <h3>Orsaken kan handla om</h3>
+      <ul class="check">
+        <li>Känsla av otillräcklighet i föräldrarollen</li>
+        <li>Behov av ökad förståelse för barnets beteende</li>
+        <li>Behov av att få prata om sin nya familj</li>
+      </ul>
+      <a class="btn btn-primary" href="/boka-tid/">Boka familjesamtal <span class="arrow">→</span></a>
+    </div>
+  </section>
+</Base>

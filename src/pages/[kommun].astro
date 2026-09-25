@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import TeamCard from '../components/TeamCard.astro';
+import { KOMMUNER, TEAM, SITE, type Kommun } from '../data/site';
+import { KOMMUNTEXT } from '../data/kommuntext';
+
+export function getStaticPaths() {
+  return KOMMUNER.map((k) => ({ params: { kommun: k.slug }, props: { k } }));
+}
+const { k } = Astro.props as { k: Kommun };
+const t = KOMMUNTEXT[k.slug];
+const others = KOMMUNER.filter((o) => o.slug !== k.slug);
+---
+<Base
+  title={`Parrådgivning ${k.name}`}
+  description={`Familjerådgivning och parrådgivning för dig i ${k.official}: ${k.fee} kr per samtal hos legitimerade psykoterapeuter på Södermalm. ${k.note ? 'Referensnummer från kommunen krävs.' : 'Boka direkt – ingen ansökan.'}`}
+  crumbs={[{ name: 'Kommuner', href: '/kommuner/' }, { name: k.name, href: `/${k.slug}/` }]}
+>
+  <PageHead eyebrow={`Familjerådgivning ${k.official}`} title={`Parrådgivning och familjerådgivning i ${k.name}`} lead={`Stockholms Parrådgivning har samarbetsavtal med ${k.official}. Om ni bor och är folkbokförda i ${k.name} kan ni få samtal hos oss till ett reducerat pris.`} />
+
+  <section class="wrap split section-tight" style="padding-top:0">
+    <div class="prose">
+      <p>{t.lead}</p>
+      {t.sections.map((s) => (
+        <>
+          <h2>{s.h}</h2>
+          {s.p.map((p) => <p>{p}</p>)}
+        </>
+      ))}
+    </div>
+    <aside class="sticky">
+      <div class="card facts">
+        <p class="eyebrow" style="margin-bottom:.5rem">För dig i {k.name}</p>
+        <p class="fee serif">{k.fee} kr<span> / samtal</span></p>
+        <ul class="check">
+          <li>{k.sessions ?? 'Subventionerade samtal enligt kommunens regler'}</li>
+          <li>90 minuter per samtal</li>
+          {k.note ? <li>{k.note}</li> : <li>Ingen ansökan hos kommunen – boka direkt hos oss</li>}
+          <li>Återbud senast kl. 09.00 dagen före, annars debiteras egenavgiften</li>
+          <li>Mottagning på {SITE.address.area}, {SITE.address.street}</li>
+        </ul>
+        <a class="btn btn-primary" href="/boka-tid/">Boka tid <span class="arrow">→</span></a>
+      </div>
+    </aside>
+  </section>
+
+  <section class="section band">
+    <div class="wrap">
+      <h2>Våra terapeuter</h2>
+      <div class="grid grid-3">{TEAM.map((m) => <TeamCard m={m} compact />)}</div>
+    </div>
+  </section>
+
+  <section class="section-tight wrap">
+    <p class="muted">Vi har även avtal med</p>
+    <ul class="chips">{others.map((o) => <li><a href={`/${o.slug}/`}>{o.name}</a></li>)}</ul>
+  </section>
+</Base>
+<style>
+  .facts .fee { font-size: 2.6rem; color: var(--ink); line-height: 1; margin-bottom: 1.25rem; }
+  .facts .fee span { font-size: 1rem; color: var(--muted); font-family: var(--sans); }
+  .facts ul { font-size: 0.95rem; margin-bottom: 1.5rem; }
+</style>

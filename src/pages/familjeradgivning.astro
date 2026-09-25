@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import img from '../assets/img/sippor.webp';
+---
+<Base title="Familjerådgivning i Stockholm för par och familjer" description="Familjerådgivning för par, sambos, föräldrar och vuxna syskon. Hjälp med samlevnadsproblem, föräldrafrågor och kriser – legitimerade psykoterapeuter." crumbs={[{ name: 'Familjerådgivning', href: '/familjeradgivning/' }]}>
+  <PageHead eyebrow="Familjerådgivning" title="Familjerådgivning för par och familjer" lead="Stockholms Parrådgivning vänder sig till par och familjer som med hjälp av en professionell familjerådgivare vill få hjälp med samlevnadsproblem och kriser i sina relationer." />
+  <section class="wrap split section-tight" style="padding-top:0">
+    <div class="prose">
+      <p>Gifta par, sambos, särbos, föräldrar till små eller stora utflugna barn, men även vuxna syskon är välkomna att söka hjälp hos oss. Vissa kommuner ger också tillstånd till att hela familjer kommer på samtal (se <a href="/kommuner/">respektive kommun</a>). Det vanligaste är att de vuxna kommer på samtal.</p>
+      <p>Det kan handla om att man har svårigheter i parrelationen, eller mer vill tala om föräldrarollens svårigheter. Många söker stöd för att kommunikationen inte fungerar som man vill, andra för att de står nära en separation. Man kan alltså ha mildare relationsproblem eller vara i akut kris för att komma till oss. Ibland behöver man få hjälp att förstå sin relation bättre.</p>
+      <h2>Föräldrafrågor</h2>
+      <ul class="check">
+        <li>Barnuppfostran, gränser och konsekvenser i föräldrarollen.</li>
+        <li>Konflikt med barnet som resulterar i att det blir bråk mellan oss vuxna.</li>
+        <li>Styvfamiljen – jag och min partners barn.</li>
+        <li>Graviditet och svårigheter kring det.</li>
+        <li>Problem med de små barnen.</li>
+        <li>Svårigheter som tonårsförälder, kring tonåren eller samarbetet mellan föräldrarna.</li>
+      </ul>
+      <div class="btn-row" style="margin-top:2rem">
+        <a class="btn btn-primary" href="/boka-tid/">Boka tid <span class="arrow">→</span></a>
+        <a class="btn btn-ghost" href="/kommunal-familjeradgivning/">Kommunal familjerådgivning</a>
+      </div>
+    </div>
+    <figure class="figure sticky" style="aspect-ratio:3/4;margin:0">
+      <Image src={img} alt="Vitsippor i en lövskog" widths={[320, 440, 570]} quality={72} sizes="(min-width: 900px) 35vw, 100vw" />
+    </figure>
+  </section>
+  <section class="section band">
+    <div class="wrap grid grid-3">
+      <a class="card link-card" href="/parsamtal/"><h3>Parsamtal</h3><p>Otrohet, kommunikation, sex, beroende – och frågan om man ska skiljas eller inte.</p></a>
+      <a class="card link-card" href="/familjesamtal/"><h3>Familjesamtal</h3><p>Familjens olika faser, styvfamiljen och adoptivfamiljen.</p></a>
+      <a class="card link-card" href="/efter-familjeradgivning/"><h3>Efter familjerådgivning</h3><p>När de beviljade samtalen inte räcker – vi föreslår en vidare kontakt.</p></a>
+    </div>
+  </section>
+</Base>

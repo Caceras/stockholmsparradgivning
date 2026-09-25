@@ -1,0 +1,94 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import TeamCard from '../components/TeamCard.astro';
+import team from '../assets/img/team-2026.webp';
+import { TEAM } from '../data/site';
+const methods = [
+  {
+    h: 'Psykodynamisk',
+    p: [
+      'Syftet är att ge klienten ökad kontakt med, och kunskap om, hur hen fungerar i relation till andra och till sig själv, och därigenom minska psykiska symtom och förebygga att de återkommer.',
+      'Psykodynamisk psykoterapi är ett samlingsnamn för terapiformer med grund i psykoanalytisk teori och ett humanistiskt synsätt. Grundtanken är att människan har ett omedvetet inre liv som huvudsakligen formats av nära och viktiga relationer under uppväxten, och att relationer och anknytningen till andra fortsätter att vägleda oss genom livet. Omedvetna försvar mot störande känslor, rädslor och inre konflikter leder till psykiska symtom och begränsningar. Ordet ”dynamisk” betonar att individens inre liv kan vara mer eller mindre i balans.',
+      'Arbetet är ett gemensamt undersökande av hur och varför klienten har hamnat ur kurs. Genom olika interventioner och observation av hur relationerna utvecklas i terapirummet är målet att ge klienten möjlighet till insikt om hur hen själv fungerar när det gäller rädslor och försvar, och om möjliga lösningar.',
+      'I en parterapi ges stort utrymme för var och en att berätta om sig själv och relationen. Terapeutens uppgift är att hjälpa den som pratar att komma vidare och djupare i reflektionen över hur hen själv påverkar relationen – till exempel hur egna problematiska livsmönster påverkar relationen till partnern, och hur hen är en del av en dysfunktionell kommunikation. Den lyssnande partnern kan också behöva hjälp att lyssna öppet och aktivt, pausa sin egen uppfattning och försöka förstå partnerns.',
+    ],
+  },
+  {
+    h: 'Emotionellt fokuserad parterapi (EFT)',
+    p: [
+      'Emotionellt fokuserad parterapi (EFT) är en metod för parterapi med starkt forskningsstöd. Metoden skapades under 1980-talet av Dr Sue Johnson och har fortsatt att utvecklas genom ICEEFT – International Centre for Excellence in Emotionally Focused Therapy.',
+      'EFT är en integrativ metod, vilket innebär att den bygger på flera metoder och teorier, som anknytningsteorin och de humanistiska och systemiska psykoterapierna. Som namnet antyder är det emotionerna som skapar låsningen i en krisande relation – och emotionerna som är nyckeln till en bra och trygg relation.',
+    ],
+  },
+  {
+    h: 'Systemisk',
+    p: [
+      'Teoretiskt grundar sig familjeterapin på systemteorin. Den innebär i korthet att helheten i ett mänskligt system alltid är mer än summan av delarna. Delarna hänger samman i ett ömsesidigt samspel där alla påverkar varandra. Sker en förändring i en del av systemet påverkas också de andra delarna.',
+      'Under samtalen får var och en förklara hur hen ser på familjen eller paret och vilken förändring hen önskar. De får också uttala vad de tror är orsaken till problemen och komma med lösningsförslag. Tanken är att lyssna på varandra på ett nytt sätt, utmana gamla mönster i kommunikation och beteende, och ge varandra nya roller.',
+      'Metoden går ut på att skapa nya berättelser, att alla deltar i ett gemensamt arbete och bildar ett team mot problemen. Lyckas vi se ett problem på ett nytt sätt kan vi också bli öppna för att tänka nytt, vilket kan leda till en förändringsprocess. Vi kan lämna fastlåsta positioner och dålig kommunikation – en förutsättning för att lösa de svårigheter som paret eller familjen ställs inför.',
+    ],
+  },
+  {
+    h: 'KBT',
+    p: [
+      'Fokus ligger främst på att direkt angripa dysfunktionellt beteende som skapar problem i relationen. Inledningsvis kartläggs de beteenden som är ett hinder för individen eller paret och som behöver förändras. Psykoedukation används för att informera om problemens karaktär och dela hypoteser om orsaker och vidmakthållande faktorer – till exempel att ett beteende kortsiktigt leder till ångestlindring.',
+      'Terapeuten beskriver behandlingsmetoden och rätar ut eventuella missuppfattningar kring problematiken. Dessa pedagogiska inslag lägger grunden för vidare KBT-interventioner. Den grundläggande metoden är exponering, det vill säga att personen i lagom dos väljer att stå ut med ångesten, känna den och få erfarenheten av att inte lösa den genom det beteende som på lång sikt inte är önskvärt.',
+      'Paret kan få hemuppgifter, till exempel att systematiskt observera sitt tänkande och agerande eller hur de kommunicerar med varandra. Det kan också handla om att på egen hand undersöka och ifrågasätta egna tankemönster eller prova nya färdigheter som utvecklas under terapins gång.',
+    ],
+  },
+];
+---
+<Base title="Om oss – legitimerade psykoterapeuter" description="Psykoterapeuter och familjerådgivare med erfarenhet av parterapi, psykoterapi och handledning. Vi arbetar psykodynamiskt, systemiskt, med EFT och KBT." crumbs={[{ name: 'Om oss', href: '/om-oss/' }]}>
+  <PageHead eyebrow="Om oss" title="Samtalet som en verksam kraft för förändring" lead="Vi som arbetar på Stockholms Parrådgivning är av Socialstyrelsen legitimerade psykoterapeuter, vilket medför ett eget personligt ansvar för det klientarbete vi bedriver." />
+  <section class="wrap" style="padding-bottom:clamp(2.5rem,4vw,4rem)">
+    <figure class="figure wide" style="margin:0">
+      <Image src={team} alt="Lilian Pohlkamp, Pandora Hultqvist och Beny Plüss" widths={[360, 540, 720, 1000]} quality={72} sizes="(min-width: 1180px) 1150px, 100vw" />
+    </figure>
+  </section>
+  <section class="wrap split section-tight" style="padding-top:0">
+    <div class="prose">
+      <p>Vi arbetar med kommunal och privat familjerådgivning, vilket inkluderar parsamtal och parterapi, men också med individuell psykoterapi. Vi har yrkeserfarenhet från egen regi, samt från forskning i psykiatri och utbildning.</p>
+      <p>Utöver familjerådgivning finns i vår grupp erfarenhet av psykoterapi, psykosocialt behandlingsarbete och gruppterapi. Många av dem vi har kontakt med har en psykiatrisk diagnos, andra har mer existentiell problematik eller brottas med svårigheter av olika slag. De problemområden vi möter kan handla om våld, missbruk, kris och trauman, men också om att vilja komma vidare i förståelsen av sig själv, sitt beteende och hur man kan fungera bättre i vardagen – med sig själv och med andra.</p>
+      <p>Vi har gjort barnutredningar inom socialtjänsten och psykiatriska utredningar på BUP, och arbetat med föräldrar individuellt och i grupp. Vår gemensamma utgångspunkt är att se samtalet som en verksam kraft för förändring. Vi anser att människan är dynamisk – inte konstant – och har en förmåga att förändras. Ibland behövs hjälp utifrån för att bli varse sina bromsklossar och försvar, som hindrar oss från att lösa såväl egna som relationella svårigheter och få ett mer harmoniskt liv.</p>
+      <p>Inledningsvis kartlägger och planerar vi utifrån parets behov och önskemål. En del av vår metodik är att tillsammans med paret utvärdera samtalen, så att det blir ett meningsfullt arbete.</p>
+    </div>
+    <aside class="card sticky">
+      <h3>I korthet</h3>
+      <ul class="check">
+        <li>Legitimerade psykoterapeuter</li>
+        <li>Auktoriserade familjerådgivare</li>
+        <li>Handledarutbildade</li>
+        <li>Avtal med åtta kommuner</li>
+        <li>Mottagning på Södermalm</li>
+      </ul>
+    </aside>
+  </section>
+
+  <section class="section band">
+    <div class="wrap">
+      <span class="eyebrow">Metoder</span>
+      <h2>Vi arbetar efter följande metodik</h2>
+      <div class="faq methods">
+        {methods.map((m, i) => (
+          <details open={i === 0}>
+            <summary>{m.h}</summary>
+            <div>{m.p.map((p) => <p>{p}</p>)}</div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section wrap">
+    <h2>Vi som arbetar här</h2>
+    <div class="grid grid-3">{TEAM.map((m) => <TeamCard m={m} />)}</div>
+  </section>
+</Base>
+<style>
+  .wide { aspect-ratio: 21 / 9; }
+  @media (max-width: 640px) { .wide { aspect-ratio: 4 / 3; } }
+  .wide :global(img) { object-position: 50% 28%; }
+  .methods { max-width: 52rem; margin-top: 1.5rem; }
+</style>

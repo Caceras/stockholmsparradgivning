@@ -1,0 +1,27 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHead from '../components/PageHead.astro';
+import KommunGrid from '../components/KommunGrid.astro';
+import { KOMMUNER } from '../data/site';
+---
+<Base title="Kommuner & priser för familjerådgivning" description="Vi har avtal om familjerådgivning med Haninge, Huddinge, Lidingö, Nacka, Sollentuna, Solna, Stockholms stad och Täby. Se egenavgift per kommun." crumbs={[{ name: 'Familjerådgivning', href: '/familjeradgivning/' }, { name: 'Kommuner & priser', href: '/kommuner/' }]}>
+  <PageHead eyebrow="Kommuner & priser" title="Familjerådgivning i din kommun" lead="Bor du i någon av kommunerna nedan kan ni få samtal hos oss till ett reducerat pris. I de flesta kommuner bokar du direkt hos oss – du behöver inte ansöka via kommunen." />
+  <section class="wrap section-tight" style="padding-top:0">
+    <KommunGrid />
+  </section>
+  <section class="section band">
+    <div class="wrap split">
+      <div>
+        <h2>Egenavgift per samtal</h2>
+        <p>Samtalet är 90 minuter och betalas vid samtalstillfället. Vid avbokning senare än kl. 09.00 dagen före debiteras egenavgiften.</p>
+        <p><a href="/kommunal-familjeradgivning/">Läs mer om kommunal familjerådgivning →</a></p>
+      </div>
+      <table class="prices">
+        <thead><tr><th scope="col">Kommun</th><th scope="col">Antal samtal</th><th scope="col">Egenavgift</th></tr></thead>
+        <tbody>
+          {KOMMUNER.map((k) => <tr><td><a href={`/${k.slug}/`}>{k.official}</a></td><td class="muted">{k.sessions ?? 'Enligt kommunens regler'}</td><td>{k.fee} kr</td></tr>)}
+        </tbody>
+      </table>
+    </div>
+  </section>
+</Base>
